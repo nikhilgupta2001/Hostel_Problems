@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 //calling the express function
 const app=express();
+const complains=require('./routes/Complains')
 
 //built in middleware for serving static files
 app.use(express.static('public'))
@@ -16,6 +17,8 @@ mongoose.connect('mongodb://localhost/HostelManagement')
 
 // recognize the incoming Request Object as a JSON Object
 app.use(express.json());
+app.use('/api/complains',complains);
+
 
 
 
