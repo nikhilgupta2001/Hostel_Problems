@@ -1,12 +1,15 @@
 .header {
-  margin: 59px auto 0px;
-  padding: 29px 0;
-  background: #999;  
-  color: floralwhite;
+    border-radius: 15px;
+    margin: 59px 20px 0px;
+    padding: 29px 0;
+    background: #999;
+    color: floralwhite;
 }
 
 .navbar-dark {
-  background-color: #444; 
+    border-radius: 15px;  
+    margin: 0px 20px;
+    background-color: #444;
 }
 
 .row-header {
@@ -22,9 +25,11 @@
 }
 
 .footer {
-  background-color: #444;
-  margin: 0px auto;
-  padding: 20px 0px;
+    background-color: #444;
+    margin: 0px 20px;
+    padding: 20px 0px;
+    border-radius: 15px;
+}
 }
 
 address {
@@ -41,7 +46,8 @@ address {
 }
 
 .body{    
-    background: #fff;
-    margin: 0 auto;
-    padding: 10px;
+    border-radius: 15px;
+    background: #fda;
+    margin: 0px 20px;
+    padding: 20px 10px;
 }
