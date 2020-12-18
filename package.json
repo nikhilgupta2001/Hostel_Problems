@@ -1,7 +1,7 @@
 {
   "name": "Hostel_Management",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. Make sure you have `Node.js` installed on your system. 2. Fork and clone this repository. 3. `cd` into the cloned repo and run `npm install` to install all dependencies. 4. You can now work with the project locally.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +13,13 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.8",
     "routes": "^2.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhilgupta2001/Hostel_Problems.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nikhilgupta2001/Hostel_Problems/issues"
+  },
+  "homepage": "https://github.com/nikhilgupta2001/Hostel_Problems#readme"
 }
