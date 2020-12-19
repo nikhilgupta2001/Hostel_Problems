@@ -5,6 +5,10 @@ const Complain=mongoose.model('Complain',new mongoose.Schema({
         type:String,
         required:true
     },
+    type_of_hostel:{
+        type:String,
+        required:true
+    },
     RoomNo:{
         type:Number,
         required:true
@@ -20,7 +24,12 @@ const Complain=mongoose.model('Complain',new mongoose.Schema({
     phone:{
         type:Number,
         required:true
+    },
+    date:{
+        type:Date,
+        default:Date.now
     }
+    
 }));
 
 exports.Complain=Complain;
