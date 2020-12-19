@@ -2,14 +2,15 @@ const mongoose=require('mongoose');
 const express=require('express');
 const router=express.Router();
 const Complain=require('../models/complain');
-//const complain = require('../models/complain');
+// const complain = require('../models/complain');
 
 /*----------------------------------------------------------------------------------------------*/
 router.post('/',async(req,res)=>{
     let complain=new Complain({
            name:req.body.name,
+           type:req.body.typeofhostel,
            RoomNo:req.body.RoomNo,
-           Complain:req.body.Complain,
+           problem:req.body.problem,
            typeOF:req.body.type,
            phone:req.body.phone
     })
@@ -96,9 +97,32 @@ router.delete('/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
 
 
 router.delete('/:id',async(req,res)=>{
-    const complain=await Complain.findById(req.params.id);
+    const complain=await Complaint.findById(req.params.id);
 
 })
+
+
+/*----------Searching Options By Type Of--------*/
+router.get('/SearchByType',(req,res)=>{
+    const searchField=req.query.typeOF;
+    Complain.find({typeOF:{$regex:searchedField}})
+            .then(data=>{
+                res.send(data);
+            }) 
+})
+
+/*--------Searching Options By Wings-------*/
+
+router.get('/SearchByWing',(req,res)=>{
+    const searchWing=req.query.Wing;
+})
+
+
+
+
+
+
+
 module.exports=router;
 
 

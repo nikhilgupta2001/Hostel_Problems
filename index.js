@@ -11,7 +11,7 @@ const complains=require('./routes/Complains')
 app.use(express.static('public'))
 
 //mongoose.connect returns a promise
-mongoose.connect('mongodb://localhost/HostelManagement')
+mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
     .catch(err=>console.error('Could not connect to MongoDb'));
 
@@ -24,4 +24,4 @@ app.use('/api/complains',complains);
 
 const port =process.env.PORT || 3000;
 //asynchronous function handles wih callback
-app.listen(3000,()=>console.log(`Listening to port 3000...`));
+app.listen(3000,()=>console.log(`Listening to port ${port}...`));
