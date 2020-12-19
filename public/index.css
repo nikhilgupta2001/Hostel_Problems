@@ -53,11 +53,16 @@
 
 .body{    
     border-radius: 15px;
-    /* background: #fda; */
+    /* background-color: rgb(219, 226, 226, .3); */
     margin: 0px 3px;
     padding: 5px 10px;
 }
 
 .table{
     text-align: center;  
+}
+
+img{
+    border-radius: 10px;
+    padding-bottom: 5px;
 }
