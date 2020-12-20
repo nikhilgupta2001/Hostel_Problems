@@ -6,6 +6,7 @@ const Complain=require('../models/complain');
 
 /*----------------------------------------------------------------------------------------------*/
 router.post('/',async(req,res)=>{
+    console.log(req.body);
     let complain=new Complain({
            name:req.body.name,
            type:req.body.typeofhostel,

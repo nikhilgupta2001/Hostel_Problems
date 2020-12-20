@@ -9,7 +9,10 @@ const complains=require('./routes/Complains')
 const loged=require('./routes/login')
 //built in middleware for serving static files
 app.use(express.static('public'))
-
+// complain api routes
+app.use(express.json());
+app.use('/complains',complains);
+app.use('/loged',loged);
 //mongoose.connect returns a promise
 mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
@@ -20,7 +23,7 @@ mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
 app.set('view engine', 'ejs');
 
 // recognize the incoming Request Object as a JSON Object
-app.use(express.json());
+
 
 // basic routes
 app.get('/', (req, res) => {
@@ -36,9 +39,9 @@ app.get('/', (req, res) => {
     res.render('index', { data });
 });
 
-app.get('/profile', (req, res) => {
+app.get('/complaint', (req, res) => {
     // rendering index page as profile doesn't exist yet
-    res.render('index');
+    res.render('complaintForm');
 });
 
 app.get('/about', (req, res) => {
@@ -52,20 +55,18 @@ app.get('/contact', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.render('auth');
+    res.render('login');
 });
 
 app.get('/signup', (req, res) => {
-    res.render('auth');
+    res.render('sign');
 });
 
 
 
 
 
-// complain api routes
-app.use('/api/complains',complains);
-app.use('/loged',loged);
+
 
 
 

@@ -25,15 +25,15 @@
           <div class="col-lg-7 px-5 pt-5">
             <h1>Welcome,</h1>
             <h3>Sign Up</h3>
-              <form class="Form my-4">
+              <form class="Form my-4" action="/loged/signup" method="post">
                 <div class="form-row">
                       <div class="col-lg-7">
-                          <input type="text" placeholder="Username" class="form-control my-3 p-2" required >
+                          <input type="text" placeholder="email" class="form-control my-3 p-2" name="email" required >
                       </div>
                   </div>
                   <div class="form-row">
                       <div class="col-lg-7">
-                          <input type="password" placeholder="Password" class="form-control my-3 p-2" required >
+                          <input type="password" placeholder="Password" class="form-control my-3 p-2" name="password" required >
                       </div>
                   </div>
                   <div class="form-row">
@@ -43,7 +43,7 @@
                   </div>
                   <div class="form-row">
                     <div class="col-lg-7">
-                        <button type="button" class="btn-1 mt-2 mb-5">Sign Up</button>
+                        <button type="submit" class="btn-1 mt-2 mb-5">Sign Up</button>
                     </div>
                    </div>
                    <p>Already have an account? <a href="#"> Login </a></p>

@@ -1,22 +1,27 @@
 require('dotenv').config()
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const router = require('./Complains');
+const router=express.Router();
 const User=require('../models/Users');
 const bcrypt=require('bcrypt');
 const mongoose=require('mongoose');
+// const app=express();
+// app.use(express.json());
 
 
 router.post('/signup',(req,res,next)=>{
     User.find({email:req.body.email})
     .exec()
     .then(user=>{
+        console.log(req.body);
+
         if(user.length>=1){
             return res.status(409).json({
                 message:'Mail exists'
             })
         }
         else{
+            console.log("HELLO");
             bcrypt.hash(req.body.password,10,(err,hash)=>{
                 if(err)
                 {
@@ -52,6 +57,7 @@ router.post('/signup',(req,res,next)=>{
 });
 
 router.post('/login',(req,res,next)=>{
+    console.log(req.body);
     User.find({email:req.body.email})
     .exec()
     .then(user=>{
@@ -72,7 +78,7 @@ router.post('/login',(req,res,next)=>{
                     email:user[0].email,
                     userId:user[0]._id
                 },
-                process.env.JWT_KEY,
+                " "+process.env.JWT_KEY,
                 {
                     expiresIn:"1h"
                 },
