@@ -54,11 +54,11 @@ app.get('/contact', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.render('login');
+    res.render('auth');
 });
 
 app.get('/signup', (req, res) => {
-    res.render('sign');
+    res.render('auth');
 });
 
 
