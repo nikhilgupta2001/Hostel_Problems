@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //calling the express function
 const app=express();
 const complains=require('./routes/Complains')
-
+const loged=require('./routes/login')
 //built in middleware for serving static files
 app.use(express.static('public'))
 
@@ -21,8 +21,6 @@ app.set('view engine', 'ejs');
 
 // recognize the incoming Request Object as a JSON Object
 app.use(express.json());
-
-
 
 // basic routes
 app.get('/', (req, res) => {
@@ -63,9 +61,11 @@ app.get('/signup', (req, res) => {
 
 
 
+
+
 // complain api routes
 app.use('/api/complains',complains);
-
+app.use('/loged',loged);
 
 
 
