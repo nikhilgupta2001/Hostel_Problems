@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const router=express.Router();
 const User=require('../models/Users');
 const bcrypt=require('bcrypt');
+const Complain=require('../models/complain')
 const mongoose=require('mongoose');
 // const app=express();
 // app.use(express.json());
@@ -21,7 +22,7 @@ router.post('/signup',(req,res,next)=>{
             })
         }
         else{
-            console.log("HELLO");
+            // console.log("HELLO");
             bcrypt.hash(req.body.password,10,(err,hash)=>{
                 if(err)
                 {
@@ -38,10 +39,12 @@ router.post('/signup',(req,res,next)=>{
                     user
                        .save()
                        .then(result=>{
-                           console.log(result);
-                           res.status(201).json({
-                               message:'User created'
-                           });
+                        //    console.log(result);
+                        // //    res.status(201).json({
+                        // //        message:'User created'
+                        // //    });
+                        // alert("You are Successfully Registered");
+                        res.redirect('/');
                        })
                        .catch(err =>{
                            console.log(err);
@@ -52,6 +55,7 @@ router.post('/signup',(req,res,next)=>{
         };
         });
         }
+
     })
   
 });
