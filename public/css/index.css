@@ -1,14 +1,12 @@
-.header {
-    border-radius: 15px;
-    margin: 59px 3px 0px;
+.header {    
+    margin: 59px 0px 0px;
     padding: 30px 0;
     background: #999;
     color: floralwhite;
 }
 
 .navbar-dark {
-    border-radius: 15px;  
-    margin: 0px 3px;
+    margin: 0px 0px;
     background-color: #444;
 }
 
@@ -27,10 +25,7 @@
     color:#fff;
     background-color: #444;
     text-align: start;
-    margin: 0px 3px;
     padding: 5px 0px;
-    border-radius: 15px;
-}
 }
 
 .address {
@@ -51,9 +46,7 @@
   padding: 10px; 
 }
 
-.body{    
-    border-radius: 15px;
-    margin: 0px 3px;
+.body{        
     padding: 5px 10px;
 }
 
