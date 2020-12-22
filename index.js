@@ -5,13 +5,20 @@ const mongoose = require('mongoose');
 
 //calling the express function
 const app=express();
-const complains=require('./routes/Complains')
-const loged=require('./routes/login')
+const complains=require('./routes/Complains');
+const loged=require('./routes/login');
+const Complain=require('./models/complain');
+
 //built in middleware for serving static files
-app.use(express.static('public'))
+
+app.use(express.static('public'));
 // complain api routes
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(express.json());
 app.use('/complains',complains);
+
 app.use('/loged',loged);
 //mongoose.connect returns a promise
 mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
@@ -24,24 +31,24 @@ app.set('view engine', 'ejs');
 
 // recognize the incoming Request Object as a JSON Object
 
-
 // basic routes
+
 app.get('/', (req, res) => {
-    // dummy data
-    const data = {
-        "name": "Dhrutik",
-        "hostel": "Bhabha Bhavan",
-        "room": "A-111",
-        "complain": "Electrical Item",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "phone": 123456789
-    };
-    res.render('index', { data });
+    Complain.find({},function(err,data){
+        console.log(data);
+        res.render('index',{data});
+    }
+    )  
 });
 
 app.get('/complaint', (req, res) => {
     // rendering index page as profile doesn't exist yet
     res.render('complaintForm');
+});
+
+app.get('/profile', (req, res) => {
+    // rendering index page as profile doesn't exist yet
+    res.render('profile');
 });
 
 app.get('/about', (req, res) => {

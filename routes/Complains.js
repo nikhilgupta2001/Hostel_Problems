@@ -13,10 +13,11 @@ router.post('/',async(req,res)=>{
            RoomNo:req.body.RoomNo,
            problem:req.body.problem,
            typeOF:req.body.type,
-           phone:req.body.phone
+           phone:req.body.phone,
+           description:req.body.description
     })
     complain=await complain.save();
-    res.send(complain);
+    res.redirect('/');
 });
 /*---------------------------------------------Get All Complains Api----------------------------------------------*/
 
