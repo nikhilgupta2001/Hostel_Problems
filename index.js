@@ -34,11 +34,14 @@ app.set('view engine', 'ejs');
 // basic routes
 
 app.get('/', (req, res) => {
-    Complain.find({},function(err,data){
-        console.log(data);
+    const data = [
+        {"name" : "foo", "type": "electrical", "RoomNo": "A-204", "typeOf": "Fan", "problem": "lorem", "phone": "123456"}
+    ]
+    // Complain.find({},function(err,data){
+    //     console.log(data);
         res.render('index',{data});
-    }
-    )  
+    // }
+    // )  
 });
 
 app.get('/complaint', (req, res) => {
