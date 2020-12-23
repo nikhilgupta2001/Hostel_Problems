@@ -2,15 +2,15 @@
 const express=require('express');
 
 const mongoose = require('mongoose');
-
+const cookieParser=require('cookie-parser');
 //calling the express function
 const app=express();
 const complains=require('./routes/Complains');
 const loged=require('./routes/login');
 const Complain=require('./models/complain');
-
+const checkAuth=require('./middleware/auth');
 //built in middleware for serving static files
-
+app.use(cookieParser());
 app.use(express.static('public'));
 // complain api routes
 var bodyParser = require('body-parser');
@@ -34,14 +34,11 @@ app.set('view engine', 'ejs');
 // basic routes
 
 app.get('/', (req, res) => {
-    const data = [
-        {"name" : "foo", "type": "electrical", "RoomNo": "A-204", "typeOf": "Fan", "problem": "lorem", "phone": "123456"}
-    ]
-    // Complain.find({},function(err,data){
-    //     console.log(data);
+    Complain.find({},function(err,data){
+        console.log(data);
         res.render('index',{data});
-    // }
-    // )  
+    }
+    )  
 });
 
 app.get('/complaint', (req, res) => {
@@ -49,7 +46,7 @@ app.get('/complaint', (req, res) => {
     res.render('complaintForm');
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile',checkAuth, (req, res) => {
     // rendering index page as profile doesn't exist yet
     res.render('profile');
 });
@@ -71,13 +68,6 @@ app.get('/login', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('sign');
 });
-
-
-
-
-
-
-
 
 
 const port =process.env.PORT || 3000;
