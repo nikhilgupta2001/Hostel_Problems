@@ -6,6 +6,7 @@ const User=require('../models/Users');
 const bcrypt=require('bcrypt');
 const Complain=require('../models/complain')
 const mongoose=require('mongoose');
+const { response } = require('express');
 // const app=express();
 // app.use(express.json());
 
@@ -61,7 +62,7 @@ router.post('/signup',(req,res,next)=>{
 });
 
 router.post('/login',(req,res,next)=>{
-    console.log(req.body);
+    // console.log(req.body);
     User.find({email:req.body.email})
     .exec()
     .then(user=>{
@@ -77,21 +78,25 @@ router.post('/login',(req,res,next)=>{
                  }); 
             }
             if(result){
+                console.log(process.env.JWT_KEY);
                 const token=jwt.sign(
                 {
                     email:user[0].email,
                     userId:user[0]._id
                 },
-                " "+process.env.JWT_KEY,
+                `${process.env.JWT_KEY}`,
                 {
                     expiresIn:"1h"
                 },
 
                 )
+                return res.cookie('token',token).redirect('/');
+                
                 return res.status(200).json({
                     message:'Auth successful',
                     token:token
                 });
+                
             }
             res.status(401).json({
                 message:'Auth failed'
@@ -104,6 +109,8 @@ router.post('/login',(req,res,next)=>{
             error:err
         })
     })
+                    // res.redirect('/');
+
 });
 
 router.delete('/:userId',(req,res,next)=>{

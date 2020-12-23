@@ -2,15 +2,15 @@
 const express=require('express');
 
 const mongoose = require('mongoose');
-
+const cookieParser=require('cookie-parser');
 //calling the express function
 const app=express();
 const complains=require('./routes/Complains');
 const loged=require('./routes/login');
 const Complain=require('./models/complain');
-
+const checkAuth=require('./middleware/auth');
 //built in middleware for serving static files
-
+app.use(cookieParser());
 app.use(express.static('public'));
 // complain api routes
 var bodyParser = require('body-parser');
@@ -46,7 +46,7 @@ app.get('/complaint', (req, res) => {
     res.render('complaintForm');
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile',checkAuth, (req, res) => {
     // rendering index page as profile doesn't exist yet
     res.render('profile');
 });
@@ -68,13 +68,6 @@ app.get('/login', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('sign');
 });
-
-
-
-
-
-
-
 
 
 const port =process.env.PORT || 3000;
