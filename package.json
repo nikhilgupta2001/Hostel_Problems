@@ -21,7 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.8",
     "nodemon": "^2.0.6",
-    "routes": "^2.1.0"
+    "routes": "^2.1.0",
+    "url": "^0.11.0"
   },
   "repository": {
     "type": "git",

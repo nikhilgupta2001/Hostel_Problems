@@ -1,6 +1,5 @@
 //This returns a function
 const express=require('express');
-
 const mongoose = require('mongoose');
 const cookieParser=require('cookie-parser');
 //calling the express function
@@ -14,6 +13,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 // complain api routes
 var bodyParser = require('body-parser');
+const { use } = require('./routes/Complains');
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(express.json());
@@ -46,9 +46,20 @@ app.get('/complaint', (req, res) => {
     res.render('complaintForm');
 });
 
-app.get('/profile',checkAuth, (req, res) => {
-    // rendering index page as profile doesn't exist yet
-    res.render('profile');
+app.get('/profile',checkAuth,(req, res) => {
+    
+   Complain.find({name:req.query.name},function(err,userdata){
+       console.log(userdata);
+         const datas={
+            email:req.query.email,
+            name:userdata[0].name,
+            RoomNo:userdata[0].RoomNo,
+            HostelName:req.query.HostelName,
+            TotalComplain:userdata.length,
+        }
+        res.render('profile',{datas});
+   })
+   
 });
 
 app.get('/about', (req, res) => {

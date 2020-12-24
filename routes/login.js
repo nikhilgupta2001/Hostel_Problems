@@ -7,9 +7,9 @@ const bcrypt=require('bcrypt');
 const Complain=require('../models/complain')
 const mongoose=require('mongoose');
 const { response } = require('express');
+const url=require('url')
 // const app=express();
 // app.use(express.json());
-
 
 router.post('/signup',(req,res,next)=>{
     User.find({email:req.body.email})
@@ -35,7 +35,10 @@ router.post('/signup',(req,res,next)=>{
                     const user=new User({
                         _id:new mongoose.Types.ObjectId(),
                         email:req.body.email,
-                        password:hash
+                        password:hash,
+                        name:req.body.name,
+                        RoomNo:req.body.RoomNo,
+                        HostelName:req.body.HostelName
                     });
                     user
                        .save()
@@ -78,7 +81,7 @@ router.post('/login',(req,res,next)=>{
                  }); 
             }
             if(result){
-                console.log(process.env.JWT_KEY);
+                // console.log(process.env.JWT_KEY);
                 const token=jwt.sign(
                 {
                     email:user[0].email,
@@ -88,9 +91,20 @@ router.post('/login',(req,res,next)=>{
                 {
                     expiresIn:"1h"
                 },
-
                 )
-                return res.cookie('token',token).redirect('/');
+                // console.log(user);
+                // req.render('/profile',{...data})
+                return res.cookie('token',token)
+                .redirect(url.format({
+                    pathname:"/profile",
+                    query:{
+                        "email":user[0].email,
+                        "id":user[0]._id,
+                        "name":user[0].name,
+                        "RoomNo":user[0].RoomNo,
+                        "HostelName":user[0].HostelName
+                    }
+                }))
                 
                 return res.status(200).json({
                     message:'Auth successful',

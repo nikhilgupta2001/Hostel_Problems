@@ -20,7 +20,7 @@
 
         <%- include("partials/header.ejs") %>
 
-        <div class="container">
+        <!-- <div class="container">
             <div class="row row-header">
                 <div class="col-12 col-sm-5">
                     <h2>Hostel Complaints</h2>
@@ -33,7 +33,7 @@
                     <a role="button" class="btn btn-block btn-primary btn-sm">Register Complaint</a>
                 </div> -->
             </div>
-        </div>
+        </div> -->
     </header>
 
     <div class="body profile">
@@ -45,26 +45,24 @@
                 </div>
             </div>
             <div class="row row-content">
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <img class="img-fluid profile-img" src="assets/bhabha.jpg"></img>
-                </div>
+                <!-- <div class="col-xs-6 col-sm-6 col-md-6">
+                    <img class="img-fluid profile-img" src="../public/assets/pic1.jpg"></img>
+                </div> -->
                 <div class="col-xs col-sm col-md">
                     <div class="card">
                         <h3 class="card-header text-white">Your Details</h3>
                         <div class="card_body">
                                 <dl class="row">
-                                <dt class="col-6">Username:</dt>
-                                    <dd>dhrutik</dd>                                
+                                <dt class="col-6">Email:</dt>
+                                    <dd><%=datas.email%></dd>                                
                                 <dt class="col-6">Name:</dt>
-                                    <dd> Dhrutik Patel</dd>
+                                    <dd><%=datas.name%></dd>
                                 <dt class="col-6">Hostel Name:</dt>
-                                    <dd> Bhabha bhavan</dd>
+                                    <dd><%=datas.HostelName%></dd>
                                 <dt class="col-6">Room No.:</dt>
-                                    <dd>D-111</dd>
+                                    <dd><%=datas.RoomNo%></dd>
                                 <dt class="col-6">No. of complains pending</dt>
-                                    <dd>1</dd>
-                                <dt class="col-6">No. of complains solved</dt>
-                                    <dd>1</dd>
+                                    <dd><%=datas.TotalComplain%></dd>
                             </dl>
                         </div>
                     </div>

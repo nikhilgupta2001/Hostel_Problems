@@ -4,11 +4,17 @@ require('dotenv').config()
 
 module.exports=(req,res,next)=>{
     try{
+        // console.log('hello');
         console.log(req.cookies);
-        console.log(process.env.JWT_KEY);
-        const decoded=jwt.verify(req.cookies,process.env.JWT_KEY);
-        // req.userData=decoded;
-        next();
+        // console.log(process.env.JWT_KEY);
+        jwt.verify(req.cookies,process.env.JWT_KEY,(err,decoded)=>{
+            console.log(decoded);
+            // req.userData=decoded;
+            // next();
+
+        });
+
+       
     }
     catch(error)
     {
