@@ -20,29 +20,29 @@
       <div class="container">
         <div class="row">
           <div style="padding: 0;" class="col-lg-5 no-gutters">
-            <img src="assets/bhabha.jpg" class="img-fluid" alt="" />
+            <img src="assets/pic1.jpg" class="img-fluid" alt="" />
           </div>
           <div class="col-lg-7 px-5 pt-5">
             <h1>Welcome,</h1>
             <h4>Sign into your account</h4>
-              <form class="Form my-4">
+              <form class="Form" method="post" action="/loged/login">
                   <div class="form-row">
                       <div class="col-lg-7">
-                          <input type="email" placeholder="Email Address" class="form-control my-3 p-2" required >
+                          <input type="email" placeholder="Email Address" class="form-control my-3 p-2" name="email" required >
                       </div>
                   </div>
                   <div class="form-row">
                     <div class="col-lg-7">
-                        <input type="password" placeholder="Password" class="form-control my-3 p-2" required>
+                        <input type="password" placeholder="Password" class="form-control my-3 p-2" name="password" required>
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="col-lg-7">
-                        <button type="button" class="btn-1 mt-2 mb-5">Login</button>
+                        <button type="submit" class="btn-1 mt-2 mb-5">Login</button>
                     </div>
                    </div>
                    <a href="#">Forgot Password?</a>
-                   <p>Don't have an account? <a href="#">Register here</a></p>
+                   <p>Don't have an account? <a href="/signup">Register here</a></p>
               </form>
           </div>
         </div>

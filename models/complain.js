@@ -24,11 +24,10 @@ const Complain=mongoose.model('complain',new mongoose.Schema({
     phone:{
         type:Number,
         required:true
+    },
+    description:{
+        type:String
     }
-    // date:{
-    //     type:Date,
-    //     default:Date.now
-    // }
     
 }));
 

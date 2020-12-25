@@ -1,15 +1,25 @@
 //This returns a function
 const express=require('express');
-
 const mongoose = require('mongoose');
-
+const cookieParser=require('cookie-parser');
 //calling the express function
 const app=express();
-const complains=require('./routes/Complains')
-
+const complains=require('./routes/Complains');
+const loged=require('./routes/login');
+const Complain=require('./models/complain');
+const checkAuth=require('./middleware/auth');
 //built in middleware for serving static files
-app.use(express.static('public'))
+app.use(cookieParser());
+app.use(express.static('public'));
+// complain api routes
+var bodyParser = require('body-parser');
+const { use } = require('./routes/Complains');
 
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(express.json());
+app.use('/complains',complains);
+
+app.use('/loged',loged);
 //mongoose.connect returns a promise
 mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
@@ -20,27 +30,36 @@ mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
 app.set('view engine', 'ejs');
 
 // recognize the incoming Request Object as a JSON Object
-app.use(express.json());
-
-
 
 // basic routes
+
 app.get('/', (req, res) => {
-    // dummy data
-    const data = {
-        "name": "Dhrutik",
-        "hostel": "Bhabha Bhavan",
-        "room": "A-111",
-        "complain": "Electrical Item",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "phone": 123456789
-    };
-    res.render('index', { data });
+    Complain.find({},function(err,data){
+        console.log(data);
+        res.render('index',{data});
+    }
+    )  
 });
 
-app.get('/profile', (req, res) => {
+app.get('/complaint', (req, res) => {
     // rendering index page as profile doesn't exist yet
-    res.render('index');
+    res.render('complaintForm');
+});
+
+app.get('/profile',checkAuth,(req, res) => {
+    
+   Complain.find({name:req.query.name},function(err,userdata){
+       console.log(userdata);
+         const datas={
+            email:req.query.email,
+            name:userdata[0].name,
+            RoomNo:userdata[0].RoomNo,
+            HostelName:req.query.HostelName,
+            TotalComplain:userdata.length,
+        }
+        res.render('profile',{datas});
+   })
+   
 });
 
 app.get('/about', (req, res) => {
@@ -54,19 +73,12 @@ app.get('/contact', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.render('auth');
+    res.render('login');
 });
 
 app.get('/signup', (req, res) => {
-    res.render('auth');
+    res.render('sign');
 });
-
-
-
-// complain api routes
-app.use('/api/complains',complains);
-
-
 
 
 const port =process.env.PORT || 3000;
