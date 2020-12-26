@@ -85,12 +85,12 @@ router.post('/login',(req,res,next)=>{
                 const token=jwt.sign(
                 {
                     email:user[0].email,
-                    userId:user[0]._id
+                    userId:user[0]._id,
+                    RoomNo:user[0].RoomNo,
+                    name:user[0].name,
+                    HostelName:user[0].HostelName
                 },
-                `${process.env.JWT_KEY}`,
-                {
-                    expiresIn:"1h"
-                },
+                process.env.JWT_KEY
                 )
                 // console.log(user);
                 // req.render('/profile',{...data})
@@ -105,11 +105,6 @@ router.post('/login',(req,res,next)=>{
                         "HostelName":user[0].HostelName
                     }
                 }))
-                
-                return res.status(200).json({
-                    message:'Auth successful',
-                    token:token
-                });
                 
             }
             res.status(401).json({

@@ -47,14 +47,14 @@ app.get('/complaint', (req, res) => {
 });
 
 app.get('/profile',checkAuth,(req, res) => {
-    
+    console.log(req.userData);
    Complain.find({name:req.query.name},function(err,userdata){
        console.log(userdata);
          const datas={
-            email:req.query.email,
-            name:userdata[0].name,
-            RoomNo:userdata[0].RoomNo,
-            HostelName:req.query.HostelName,
+            email:req.userData.email,
+            name:req.userData.name,
+            RoomNo:req.userData.RoomNo,
+            HostelName:req.userData.HostelName,
             TotalComplain:userdata.length,
         }
         res.render('profile',{datas});

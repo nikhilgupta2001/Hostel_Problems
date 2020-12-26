@@ -5,13 +5,16 @@ require('dotenv').config()
 module.exports=(req,res,next)=>{
     try{
         // console.log('hello');
-        console.log(req.cookies);
+        console.log(req.cookies.token);
         // console.log(process.env.JWT_KEY);
-        jwt.verify(req.cookies,process.env.JWT_KEY,(err,decoded)=>{
-            console.log(decoded);
-            // req.userData=decoded;
-            // next();
-
+        jwt.verify(req.cookies.token, process.env.JWT_KEY,(err,decoded)=>{
+            if(err)
+            {
+                res.status(500).json({err:"Not Authorized"})
+            }
+            // console.log(decoded);
+            req.userData=decoded;
+            next();
         });
 
        
@@ -22,5 +25,5 @@ module.exports=(req,res,next)=>{
            message:'Auth Failed Please Login First'
        }) 
     }
-    next(); 
+   
 }
