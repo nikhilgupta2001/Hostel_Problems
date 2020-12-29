@@ -21,7 +21,11 @@ app.use('/complains',complains);
 
 app.use('/loged',loged);
 //mongoose.connect returns a promise
-mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
+
+// 'mongodb://localhost/HostelManagement'
+const connection_url = 'mongodb+srv://dhrup:1234567890dhru@cluster0.gsf5c.mongodb.net/Notes?retryWrites=true&w=majority';
+
+mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
     .catch(err=>console.error('Could not connect to MongoDb'));
 
@@ -34,11 +38,22 @@ app.set('view engine', 'ejs');
 // basic routes
 
 app.get('/', (req, res) => {
-    Complain.find({},function(err,data){
-        console.log(data);
-        res.render('index',{data});
-    }
-    )  
+    // Complain.find({},function(err,data){
+    //     console.log(data);
+    //     res.render('index',{data});
+    // }
+    // )
+
+    data = [
+            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
+            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
+            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
+            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
+            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
+            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
+            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"}
+           ];
+    res.render('index',{data});
 });
 
 app.get('/complaint', (req, res) => {
@@ -58,8 +73,7 @@ app.get('/profile',checkAuth,(req, res) => {
             TotalComplain:userdata.length,
         }
         res.render('profile',{datas});
-   })
-   
+   })   
 });
 
 app.get('/about', (req, res) => {
