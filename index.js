@@ -38,22 +38,11 @@ app.set('view engine', 'ejs');
 // basic routes
 
 app.get('/', (req, res) => {
-    // Complain.find({},function(err,data){
-    //     console.log(data);
-    //     res.render('index',{data});
-    // }
-    // )
-
-    data = [
-            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
-            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
-            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
-            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
-            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
-            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"},
-            {"name": "Foofooasdfe", "type": "Bhabha bhavan", "RoomNo": "A-111", "typeOF": "Electrical", "problem": "fan not working light not working switch not working", "phone": "1234567790"}
-           ];
-    res.render('index',{data});
+    Complain.find({},function(err,data){
+        console.log(data);
+        res.render('index',{data});
+    }
+    )
 });
 
 app.get('/complaint', (req, res) => {
