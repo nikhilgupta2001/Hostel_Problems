@@ -1,11 +1,16 @@
-.header {    
-    margin: 59px 0px 0px;
-    color: floralwhite;
+:root{
+  --hfcolor: purple;  
+  --text-color: floralwhite;
+}
+
+.header {
+    /* margin: 59px 0px 0px; */
+    color: var(--text-color);
 }
 
 .navbar-dark {
-    margin: 0px 0px;
-    background-color: #1E40AF;
+    /* background-color: #1E40AF; */
+    background-color: var(--hfcolor);
 }
 
 .row-header {
@@ -20,8 +25,9 @@
 }
 
 .footer {
-    color:#fff;
-    background-color: #1E40AF;
+    color:#fff;    
+    /* background-color: #1E40AF; */
+    background-color: var(--hfcolor);
     text-align: start;
     padding: 5px 0px;
 }
@@ -45,16 +51,36 @@
 }
 
 .table{
-    text-align: center;  
+    text-align: center;
+    /* background-color: #1E40AF; */
+    background-color: var(--hfcolor);
+    color: floralwhite;  
+}
+.table > tbody{
+  color: black;
+  -webkit-text-stroke-width: thin;
+  background-color: rgb(255, 255, 255, 0.7);
 }
 
-.container{
+/* .container{
   margin: 0;
   padding: 0;
   max-width: 3000px;
   position: relative;
-}
+} */
 
 .button{
   position: relative;
+}
+
+.carousel-inner{
+  size: relative;
+  height: 450px;  
+}
+
+a{
+  color: var(--text-color);
+}
+a:hover {
+  color: #fff;
 }

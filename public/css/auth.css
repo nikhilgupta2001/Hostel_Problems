@@ -9,15 +9,12 @@ body{
     margin-top: 50px;
 }
 .row{
-    background-color: white;
-    border-radius: 30px;
+    background-color: white;    
 }
 
 img{
     width: 700px !important;
-    height: 500px !important; 
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    height: 500px !important;
 }
 
 .btn-1{

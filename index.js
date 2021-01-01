@@ -21,7 +21,10 @@ app.use('/complains',complains);
 
 app.use('/loged',loged);
 //mongoose.connect returns a promise
-mongoose.connect('mongodb://localhost/HostelManagement',{useNewUrlParser:true})
+
+const connection_url = 'mongodb://localhost/HostelManagement';
+
+mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
     .catch(err=>console.error('Could not connect to MongoDb'));
 
@@ -38,7 +41,7 @@ app.get('/', (req, res) => {
         console.log(data);
         res.render('index',{data});
     }
-    )  
+    )
 });
 
 app.get('/complaint', (req, res) => {
@@ -58,8 +61,7 @@ app.get('/profile',checkAuth,(req, res) => {
             TotalComplain:userdata.length,
         }
         res.render('profile',{datas});
-   })
-   
+   })   
 });
 
 app.get('/about', (req, res) => {
