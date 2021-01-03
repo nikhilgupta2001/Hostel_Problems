@@ -1,0 +1,74 @@
+:root{
+  --hfcolor: purple;  
+  --text-color: floralwhite;
+}
+
+.header {
+    color: var(--text-color);
+}
+
+.navbar-dark {
+    background-color: var(--hfcolor);
+}
+
+.row-header {
+  margin: 0px auto;
+  padding: 0px 0px;
+}
+
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px;
+  border-bottom: 1px ridge;
+}
+
+.footer {
+    color:#fff;
+    background-color: var(--hfcolor);
+    text-align: start;
+    padding: 5px 0px;
+}
+
+.address {
+  font-size: 90%;
+  margin: 0px;
+  
+}
+.justify-content-center > p {
+    color: #fff;
+    font-size: 90%;
+    font-style: oblique;
+}
+
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px; 
+}
+
+.table{
+    text-align: center;
+    background-color: var(--hfcolor);
+    color: floralwhite;  
+}
+.table > tbody{
+  color: black;
+  -webkit-text-stroke-width: thin;
+  background-color: rgb(255, 255, 255, 0.7);
+}
+
+.button{
+  position: relative;
+}
+
+.carousel-inner{
+  size: relative;
+}
+
+a{
+  color: var(--text-color);
+}
+a:hover {
+  color: #fff;
+}

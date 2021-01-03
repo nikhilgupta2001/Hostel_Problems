@@ -1,7 +1,11 @@
 const mongoose=require('mongoose');
 
-const Complain=mongoose.model('Complain',new mongoose.Schema({
+const Complain=mongoose.model('complain',new mongoose.Schema({
     name:{
+        type:String,
+        required:true
+    },
+    type:{
         type:String,
         required:true
     },
@@ -9,18 +13,23 @@ const Complain=mongoose.model('Complain',new mongoose.Schema({
         type:Number,
         required:true
     },
-    Complain:{
+    problem:{
         type:String,
         required:true
     },
     typeOF:{
          type:String,
-         required:true
+         required:false
     },
     phone:{
         type:Number,
         required:true
+    },
+    description:{
+        type:String
     }
+    
 }));
 
-exports.Complain=Complain;
+// exports.Complain=Complain;
+module.exports=Complain;
