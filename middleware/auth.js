@@ -10,7 +10,9 @@ module.exports=(req,res,next)=>{
         jwt.verify(req.cookies.token, process.env.JWT_KEY,(err,decoded)=>{
             if(err)
             {
-                res.status(500).json({err:"Not Authorized"})
+               // res.status(500).json({err:"Not Authorized"})
+               res.render('/');
+               alert("Please Sign Up!!!!")
             }
             // console.log(decoded);
             req.userData=decoded;
@@ -20,10 +22,9 @@ module.exports=(req,res,next)=>{
        
     }
     catch(error)
-    {
-       return res.status(401).json({
-           message:'Auth Failed Please Login First'
-       }) 
+    {  
+        res.render('/');
+        alert("Auth Failed Please Login First");
     }
    
 }
