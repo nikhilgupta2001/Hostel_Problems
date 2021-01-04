@@ -11,7 +11,10 @@ module.exports=(req,res,next)=>{
             if(err)
             {   console.log("Not Authorized");
                // res.status(500).json({err:"Not Authorized"})
-               res.send('<script>alert("Plese Login !!!!")</script>').redirect('/');             
+             
+               res.redirect('/error');  
+                 //res.send('<script>alert("Plese Login !!!!")</script>');      
+                 alert("Plese Login !!!!");  
             }
             // console.log(decoded);
             req.userData=decoded;
@@ -26,4 +29,4 @@ module.exports=(req,res,next)=>{
         
     }
    
-}
+} 

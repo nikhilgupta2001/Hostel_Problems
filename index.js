@@ -22,7 +22,7 @@ app.use('/complains',complains);
 app.use('/loged',loged);
 //mongoose.connect returns a promise
 
-const connection_url = 'mongodb://localhost/HostelManagement';
+const connection_url = 'mongodb+srv://admin-sarvesh:Sarvesh@21@cluster0-ug5sl.mongodb.net/developerDB';
 
 mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
@@ -49,6 +49,9 @@ app.get('/complaint', (req, res) => {
     res.render('complaintForm');
 });
 
+app.get('/error',(req,res)=>{
+    res.render('error');
+})
 app.get('/profile',checkAuth,(req, res) => {
     console.log(req.userData);
    Complain.find({name:req.query.name},function(err,userdata){
