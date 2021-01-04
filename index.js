@@ -22,12 +22,12 @@ app.use('/complains',complains);
 app.use('/loged',loged);
 //mongoose.connect returns a promise
 
-const connection_url = 'mongodb+srv://admin-sarvesh:Sarvesh@21@cluster0-ug5sl.mongodb.net/developerDB';
+const connection_url = 'mongodb://localhost/HostelManagement';
 
 mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
     .catch(err=>console.error('Could not connect to MongoDb'));
-
+    
 // set template engine as ejs
 // express by default looks for view engines in '/views' directory
 app.set('view engine', 'ejs');
