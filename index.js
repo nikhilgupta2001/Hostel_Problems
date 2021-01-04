@@ -27,7 +27,7 @@ const connection_url = 'mongodb://localhost/HostelManagement';
 mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
     .catch(err=>console.error('Could not connect to MongoDb'));
-
+    
 // set template engine as ejs
 // express by default looks for view engines in '/views' directory
 app.set('view engine', 'ejs');
@@ -91,4 +91,4 @@ app.get('/signup', (req, res) => {
 
 const port =process.env.PORT || 3000;
 //asynchronous function handles wih callback
-app.listen(3000,()=>console.log(`Listening to port ${port}...`));
+app.listen(port,()=>console.log(`Listening to port ${port}...`));

@@ -18,11 +18,11 @@ router.post('/signup',(req,res,next)=>{
         console.log(req.body);
 
         if(user.length>=1){
-            return res.status(409).json({
-                message:'Mail exists'
-            })
+            
+            res.redirect('/login');
+            alert("Mail already exists,Login now!!!!");
         }
-        else{
+        else{ 
             // console.log("HELLO");
             bcrypt.hash(req.body.password,10,(err,hash)=>{
                 if(err)
@@ -70,9 +70,12 @@ router.post('/login',(req,res,next)=>{
     .exec()
     .then(user=>{
         if(user.length<1){
-            return res.status(401).json({
+          /*  return res.status(401).json({
                 message:"Auth failed"
-            });
+            });*/
+            res.send('<script>alert("Plese Sign Up !!!!")</script>');
+            res.redirect('http://localhost:3000/signup');
+            
         }
         bcrypt.compare(req.body.password,user[0].password,(err,result)=>{
             if(err){
