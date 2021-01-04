@@ -13,8 +13,7 @@ module.exports=(req,res,next)=>{
                // res.status(500).json({err:"Not Authorized"})
              
                res.redirect('/error');  
-                 //res.send('<script>alert("Plese Login !!!!")</script>');      
-                 alert("Plese Login !!!!");  
+                
             }
             // console.log(decoded);
             req.userData=decoded;
@@ -24,7 +23,10 @@ module.exports=(req,res,next)=>{
        
     }
     catch(error)
-    {   console.log("Auth Failed Please Login First");
+
+
+    {    res.redirect('/error');  
+        console.log("Auth Failed Please Login First");
         
         
     }

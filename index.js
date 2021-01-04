@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
     )
 });
 
-app.get('/complaint', (req, res) => {
+app.get('/complaint', checkAuth,(req, res,err) => {
     // rendering index page as profile doesn't exist yet
     res.render('complaintForm');
 });
