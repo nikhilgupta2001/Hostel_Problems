@@ -37,14 +37,11 @@ app.set('view engine', 'ejs');
 // basic routes
 
 app.get('/', (req, res) => {
-    // Complain.find({},function(err,data){
-    //     console.log(data);
-    //     res.render('index',{data});
-    // }
-    // )
-
-    data = []
-    res.render('index',{data});
+    Complain.find({},function(err,data){
+        console.log(data);
+        res.render('index',{data});
+    }
+    )
 });
 
 app.get('/complaint', (req, res) => {
@@ -52,22 +49,18 @@ app.get('/complaint', (req, res) => {
     res.render('complaintForm');
 });
 
-//checkAuth
-
-app.get('/profile',(req, res) => {
+app.get('/profile', checkAuth, (req, res) => {
     console.log(req.userData);
-//    Complain.find({name:req.query.name},function(err,userdata){
-//        console.log(userdata);
-//          const datas={
-//             email:req.userData.email,
-//             name:req.userData.name,
-//             RoomNo:req.userData.RoomNo,
-//             HostelName:req.userData.HostelName,
-//             TotalComplain:userdata.length,
-//         }
-   //})   
-   datas = {"email":"dhrutikpatel@gmail.com", "name":"dhrutik", "RoomNo": "A-111", "HostelName":"Bhabha bhavan", "TotalComplain": "5"};
-        res.render('profile',{datas});
+   Complain.find({name:req.query.name},function(err,userdata){
+       console.log(userdata);
+         const datas={
+            email:req.userData.email,
+            name:req.userData.name,
+            RoomNo:req.userData.RoomNo,
+            HostelName:req.userData.HostelName,
+            TotalComplain:userdata.length,
+        }
+   })      
 });
 
 app.get('/about', (req, res) => {
