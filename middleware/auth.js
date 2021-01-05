@@ -11,7 +11,9 @@ module.exports=(req,res,next)=>{
             if(err)
             {   console.log("Not Authorized");
                // res.status(500).json({err:"Not Authorized"})
-               res.send('<script>alert("Plese Login !!!!")</script>').redirect('/');             
+             
+               res.redirect('/error');  
+                
             }
             // console.log(decoded);
             req.userData=decoded;
@@ -21,9 +23,12 @@ module.exports=(req,res,next)=>{
        
     }
     catch(error)
-    {   console.log("Auth Failed Please Login First");
+
+
+    {    res.redirect('/error');  
+        console.log("Auth Failed Please Login First");
         
         
     }
    
-}
+} 

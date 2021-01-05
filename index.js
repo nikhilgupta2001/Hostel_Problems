@@ -22,7 +22,7 @@ app.use('/complains',complains);
 app.use('/loged',loged);
 //mongoose.connect returns a promise
 
-const connection_url = 'mongodb://localhost/HostelManagement';
+const connection_url = 'mongodb+srv://admin-sarvesh:Sarvesh@21@cluster0-ug5sl.mongodb.net/developerDB';
 
 mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
@@ -44,12 +44,17 @@ app.get('/', (req, res) => {
     )
 });
 
-app.get('/complaint', (req, res) => {
+app.get('/complaint', checkAuth,(req, res,err) => {
     // rendering index page as profile doesn't exist yet
     res.render('complaintForm');
 });
 
-app.get('/profile', checkAuth, (req, res) => {
+app.get('/error',(req,res)=>{
+    res.render('error');
+})
+
+app.get('/profile',checkAuth,(req, res) => {
+
     console.log(req.userData);
    Complain.find({name:req.query.name},function(err,userdata){
        console.log(userdata);
