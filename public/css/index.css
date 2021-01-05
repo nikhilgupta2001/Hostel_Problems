@@ -1,5 +1,5 @@
 :root{
-  --hfcolor: purple;  
+  --hfcolor: rgb(128, 0, 128, 0.9);  
   --text-color: floralwhite;
 }
 
@@ -29,15 +29,30 @@
     padding: 5px 0px;
 }
 
-.address {
+.links{
+  padding: 5px 0px 5px;
+  text-align-last: center;
+}
+
+.add{
+  padding: 5px 0px 15px;
+  text-align: center;
+}
+
+address {
   font-size: 90%;
   margin: 0px;
   
 }
+
+.justify-content-center{
+  padding: 30px 0px;
+}
+
 .justify-content-center > p {
-    color: #fff;
-    font-size: 90%;
-    font-style: oblique;
+  color: #fff;
+  font-size: 90%;
+  font-style: oblique;
 }
 
 .tab-content {
@@ -62,7 +77,7 @@
   position: relative;
 }
 
-.carousel-inner{
+.carousel-inner{  
   size: relative;
 }
 

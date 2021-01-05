@@ -19,8 +19,11 @@
     <section class="form">
       <div class="container">
         <div class="row">
-          <div style="padding: 0px;" class="col-lg-7 col-md-7 no-gutters justify-self-center">
-            <img src="assets/bhabha2.jpg" style="height:680px!important" class="img-fluid" alt="" />
+          <div class="col-lg-7 col-md-7 no-gutters justify-self-center d-none d-sm-block" style="padding: 0px;">
+            <img src="assets/signup.jpg" style="height:680px!important" class="img-fluid" alt="" />
+          </div>
+          <div class="col-lg-7 col-md-7 no-gutters justify-self-center d-block d-sm-none" style="padding: 0px;">
+            <img src="assets/signup.jpg" style="height:360px!important" class="img-fluid" alt="" />
           </div>
           <div class="col-lg-5 px-5 col-md-5 pt-5">
             <h1>Welcome,</h1>
@@ -28,7 +31,7 @@
               <form class="Form my-4" action="/loged/signup" method="post"> 
                 <div class="form-row">
                       <div class="col-lg-7">
-                          <input type="text" placeholder="Enter your email id" class="form-control my-3 p-2" name="email" required >
+                          <input type="email" placeholder="Enter your email id" class="form-control my-3 p-2" name="email" required >
                       </div>
                   </div>
                   <div class="form-row">
