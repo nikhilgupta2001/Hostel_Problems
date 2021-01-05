@@ -10,7 +10,7 @@ const Complain=mongoose.model('complain',new mongoose.Schema({
         required:true
     },
     RoomNo:{
-        type:Number,
+        type:String,
         required:true
     },
     problem:{
