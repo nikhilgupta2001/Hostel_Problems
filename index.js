@@ -90,5 +90,4 @@ app.get('/signup', (req, res) => {
 
 const port =process.env.PORT || 3000;
 //asynchronous function handles wih callback
->>>>>>> 95913726f58c84351d3d841f42ec7b4ce8621a03
 app.listen(port,()=>console.log(`Listening to port ${port}...`));
