@@ -22,7 +22,7 @@ app.use('/complains',complains);
 app.use('/loged',loged);
 //mongoose.connect returns a promise
 
-const connection_url = 'mongodb://localhost/HostelManagement';
+const connection_url =  'mongodb://localhost/HostelManagement';
 
 mongoose.connect(connection_url, {useNewUrlParser:true})
     .then(()=>console.log('Connected to MongoDB...'))
@@ -44,13 +44,18 @@ app.get('/', (req, res) => {
     )
 });
 
-app.get('/complaint', (req, res) => {
+app.get('/complaint', checkAuth,(req, res,err) => {
     // rendering index page as profile doesn't exist yet
     res.render('complaintForm');
 });
 
-app.get('/profile', checkAuth, (req, res) => {     
-   console.log(req.userData);
+app.get('/error',(req,res)=>{
+    res.render('error');
+})
+
+app.get('/profile',checkAuth,(req, res) => {
+
+    console.log(req.userData);
    Complain.find({name:req.query.name},function(err,userdata){
        console.log(userdata);
          const datas={
@@ -61,7 +66,7 @@ app.get('/profile', checkAuth, (req, res) => {
             TotalComplain:userdata.length,
         }
         res.render('profile',{datas});
-   })     
+   })      
 });
 
 app.get('/about', (req, res) => {
@@ -85,4 +90,5 @@ app.get('/signup', (req, res) => {
 
 const port =process.env.PORT || 3000;
 //asynchronous function handles wih callback
+>>>>>>> 95913726f58c84351d3d841f42ec7b4ce8621a03
 app.listen(port,()=>console.log(`Listening to port ${port}...`));
