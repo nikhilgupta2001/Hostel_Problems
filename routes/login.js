@@ -18,11 +18,11 @@ router.post('/signup',(req,res,next)=>{
         console.log(req.body);
 
         if(user.length>=1){
-            return res.status(409).json({
-                message:'Mail exists'
-            })
+            
+            res.redirect('/error');
+            
         }
-        else{
+        else{ 
             // console.log("HELLO");
             bcrypt.hash(req.body.password,10,(err,hash)=>{
                 if(err)
@@ -70,15 +70,19 @@ router.post('/login',(req,res,next)=>{
     .exec()
     .then(user=>{
         if(user.length<1){
-            return res.status(401).json({
+          /*  return res.status(401).json({
                 message:"Auth failed"
-            });
+            });*/
+           
+            res.redirect('/error');
+            
         }
         bcrypt.compare(req.body.password,user[0].password,(err,result)=>{
             if(err){
-                 return res.status(401).json({
+                /* return res.status(401).json({
                      message:'Auth failed'
-                 }); 
+                 }); */
+                res.send('<script>alert("Please check your password,and enter the coorect passowrd.)</script>');
             }
             if(result){
                 // console.log(process.env.JWT_KEY);
@@ -107,9 +111,10 @@ router.post('/login',(req,res,next)=>{
                 }))
                 
             }
-            res.status(401).json({
+           /* res.status(401).json({
                 message:'Auth failed'
-            });
+            });*/
+            res.redirect('/error');
         });
     })
     .catch(err=>{
@@ -118,7 +123,7 @@ router.post('/login',(req,res,next)=>{
             error:err
         })
     })
-                    // res.redirect('/');
+                    // 
 
 });
 

@@ -1,3 +1,7 @@
+.profile{
+  margin-top: 180px;
+}
+
 .profile-img{    
     border-radius: 100%;
     height: 250px;
@@ -5,11 +9,11 @@
 }
 
 .card-header {
-    padding: .75rem 1.25rem;
-    margin-bottom: 5px;
-    background-color: purple;
-    border: 2px solid rgba(0,0,0,.5);
+    padding: .75rem 1.25rem;    
+    background-color: rgb(128, 0, 128, 0.9);
+    border: 2px solid rgba(128, 0, 128, 0.3);
 }
 .card_body{
-  padding-left: 5px;  
+  background-color: rgb(128, 0, 128,.2);
+  padding-left: 5px;
 }

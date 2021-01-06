@@ -12,7 +12,7 @@ router.post('/',async(req,res)=>{
            type:req.body.typeofhostel,
            RoomNo:req.body.RoomNo,
            problem:req.body.problem,
-           typeOF:req.body.type,
+           typeOF:req.body.selectpicker,
            phone:req.body.phone,
            description:req.body.description
     })

@@ -1,15 +1,13 @@
 :root{
-  --hfcolor: purple;  
+  --hfcolor: rgb(128, 0, 128, 1);  
   --text-color: floralwhite;
 }
 
 .header {
-    /* margin: 59px 0px 0px; */
     color: var(--text-color);
 }
 
 .navbar-dark {
-    /* background-color: #1E40AF; */
     background-color: var(--hfcolor);
 }
 
@@ -25,22 +23,36 @@
 }
 
 .footer {
-    color:#fff;    
-    /* background-color: #1E40AF; */
+    color:#fff;
     background-color: var(--hfcolor);
     text-align: start;
     padding: 5px 0px;
 }
 
-.address {
+.links{
+  padding: 5px 0px 5px;
+  text-align-last: center;
+}
+
+.add{
+  padding: 5px 0px 15px;
+  text-align: center;
+}
+
+address {
   font-size: 90%;
   margin: 0px;
   
 }
+
+.justify-content-center{
+  padding: 30px 0px;
+}
+
 .justify-content-center > p {
-    color: #fff;
-    font-size: 90%;
-    font-style: oblique;
+  color: #fff;
+  font-size: 90%;
+  font-style: oblique;
 }
 
 .tab-content {
@@ -52,7 +64,6 @@
 
 .table{
     text-align: center;
-    /* background-color: #1E40AF; */
     background-color: var(--hfcolor);
     color: floralwhite;  
 }
@@ -62,20 +73,12 @@
   background-color: rgb(255, 255, 255, 0.7);
 }
 
-/* .container{
-  margin: 0;
-  padding: 0;
-  max-width: 3000px;
-  position: relative;
-} */
-
 .button{
   position: relative;
 }
 
-.carousel-inner{
+.carousel-inner{  
   size: relative;
-  height: 450px;  
 }
 
 a{

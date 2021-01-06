@@ -18,7 +18,7 @@
             <div style="justify-content: center;" class="row">
                 <div class="col-lg-8 px-5 pt-5">
                     <h2>Put the details here</h2>
-                    <form class="Form my-4" method="POST"  action="/complains">
+                    <form class="Form my-4" method="POST"  action="/complains" onSubmit="alert('Thank you for using HosCo ,Your complain is registered successfully');">
                         <div class="form-row">
                             <div class="col-lg-8">
                                 <input type="text" placeholder="Name" class="form-control my-3 p-2" name="name" required>
@@ -35,11 +35,13 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <select name="complaints" name="type">
-                                <option value="volvo">Electrical</option>
-                                <option value="saab">Internet</option>
-                                <option value="fiat">Washroom</option>
-                                <option value="audi">Sanitation</option>
+                            <select name="selectpicker">
+                                <optgroup label="Select Table">
+                                <option value="Electrical">Electrical</option>
+                                <option value="Internet">Internet</option>
+                                <option value="Washroom">Washroom</option>
+                                <option value="Sanitation">Sanitation</option>
+                            </optgroup>
                             </select>
                         </div>
                         <div class="form-row">
